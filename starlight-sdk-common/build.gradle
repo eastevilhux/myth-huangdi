@@ -74,7 +74,7 @@ android {
 
         uat {
             debuggable true
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             // 设置那个版本
             buildConfigField "int", "VERSION_TYPE", VERSION_UAT
@@ -85,7 +85,7 @@ android {
 
         release {
             debuggable false
-            minifyEnabled true
+            minifyEnabled false
 
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             // 设置那个版本
@@ -132,6 +132,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
+    api 'com.contrarywind:Android-PickerView:4.1.9'
+    api 'com.github.eastevilhux:myth-fuxi:1.0.0'
     api 'com.google.android.material:material:1.2.1'
     api "com.github.bumptech.glide:glide:4.9.0"
     kapt 'com.github.bumptech.glide:compiler:4.9.0'
