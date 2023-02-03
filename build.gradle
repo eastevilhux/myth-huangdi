@@ -1,0 +1,100 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+apply from: "config.gradle"
+buildscript {
+    ext.kotlin_version = "1.3.72"
+    repositories {
+        google()
+        jcenter()
+        //增加 HMS Core SDK 的 Maven 仓地址
+        maven {url 'https://developer.huawei.com/repo/'}
+        //穿山甲仓库地址
+        maven { url 'https://artifact.bytedance.com/repository/pangle'}
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:4.0.0"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+        //greenDao生产代码插件
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.3.0' // add plugin
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://jitpack.io' }
+        //华为 HMS Core SDK仓库
+        maven {url 'https://developer.huawei.com/repo/'}
+        //小米仓库
+        maven { url 'https://gitlab.com/xiaomi-passport/maven-repository/raw/master/releases' }
+        //穿山甲仓库地址
+        maven { url 'https://artifact.bytedance.com/repository/pangle'}
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+/**
+ * 生成版本的时间
+ */
+static def releaseTime() {
+    return new Date().format("yyyy_MMdd_HHmm")
+}
+
+/**
+ * 生成VersionCode
+ */
+@SuppressWarnings("unused")
+static def generateVersionCode() {
+    return new Date().format("yyyyMMdd")
+}
+
+/**
+ *  重命名Apk的方法
+ */
+@SuppressWarnings(["GrMethodMayBeStatic", "unused"])
+def renameAPK(android, variant, output) {
+    def flavor = variant.productFlavors[0]
+    def flavorName
+    def versionName
+
+    if (flavor == null) {
+        flavorName = ""
+        versionName = android.defaultConfig.versionName
+    } else {
+        versionName = flavor.versionName
+        flavorName = flavor.name
+    }
+
+    if (versionName == null || versionName.toString() == "null") {
+        versionName = variant.versionName
+    }
+
+    if (versionName == null || versionName.toString() == "null") {
+        versionName = ""
+    }
+
+    def versionNameSuffix = variant.buildType.versionNameSuffix
+    if (versionNameSuffix.toString() == "null") {
+        versionNameSuffix = ""
+    }
+
+    def buildTypeName = variant.buildType.name
+
+    if (buildTypeName == "debug") {
+        buildTypeName = "dev"
+    } else if (buildTypeName == "release") {
+        buildTypeName = "prod"
+    }
+
+    if (flavorName == "" || flavorName == "null") {
+        output.outputFileName = "${APK_PREFIX}_${buildTypeName}_v${versionName}_${releaseTime()}.apk"
+    } else {
+        output.outputFileName = "${flavorName}_${buildTypeName}_v${versionName}_${releaseTime()}.apk"
+    }
+}

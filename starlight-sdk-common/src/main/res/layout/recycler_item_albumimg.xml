@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="albumImage"
+            type="com.star.light.common.entity.AlbumImage" />
+
+        <variable
+            name="presenter"
+            type="com.star.light.common.presenter.AlbumImagePresenter" />
+
+        <variable
+            name="position"
+            type="Integer" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{()->presenter.onItemClickListener(albumImage,position)}">
+
+        <ImageView
+            android:id="@+id/iv_album_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@{albumImage}" />
+
+        <ImageView
+            android:id="@+id/iv_video_tag"
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
+            android:src="@drawable/ic_va_video_tag"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:alpha="0.6"
+            android:visibility="@{albumImage.type == 3}"/>
+
+        <ImageView
+            android:id="@+id/iv_album_select"
+            android:layout_width="@dimen/dp_30"
+            android:layout_height="@dimen/dp_30"
+            android:padding="@dimen/dp_5"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/dp_4"
+            android:layout_marginRight="@dimen/dp_4"
+            android:src="@{albumImage.select ? @drawable/icon_album_img_sel : @drawable/icon_album_img_nor}"
+            android:visibility="@{albumImage.type == 1}"/>
+
+        <TextView
+            android:id="@+id/tv_video_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/AppTextTheme.Normal"
+            android:textSize="@dimen/sp_9"
+            android:text="@{albumImage.videoTimeText}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginRight="@dimen/dp_5"
+            android:layout_marginBottom="@dimen/dp_3"
+            android:visibility="@{albumImage.type == 3}"
+            android:textColor="@color/colorAppLine"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

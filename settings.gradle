@@ -1,0 +1,3 @@
+include ':starlight-sdk-common'
+include ':app'
+rootProject.name = "east-evil-myth-huangdi"

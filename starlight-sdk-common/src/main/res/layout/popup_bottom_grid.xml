@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="titleText"
+            type="androidx.databinding.ObservableField&lt;String&gt;" />
+
+        <variable
+            name="menuText"
+            type="androidx.databinding.ObservableField&lt;String&gt;" />
+
+        <variable
+            name="submitText"
+            type="androidx.databinding.ObservableField&lt;String&gt;" />
+
+        <variable
+            name="haveMenu"
+            type="androidx.databinding.ObservableField&lt;Boolean&gt;" />
+
+        <variable
+            name="haveSubmit"
+            type="androidx.databinding.ObservableField&lt;Boolean&gt;" />
+
+        <variable
+            name="adapter"
+            type="com.star.light.common.adapter.BottomPopupItemAdapter" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/sl_shape_top_fill_white_12">
+
+
+        <TextView
+            android:id="@id/tv_sl_popup_title"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_30"
+            android:layout_marginTop="@dimen/dp_10"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@{titleText}"
+            style="@style/StarTextTheme.TitleText"
+            android:background="@color/colorWhite"/>
+
+        <TextView
+            android:id="@id/tv_sl_popup_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/tv_sl_popup_title"
+            app:layout_constraintBottom_toBottomOf="@id/tv_sl_popup_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginLeft="@dimen/dp_15"
+            style="@style/AppTextTheme.Normal"
+            android:visibility="@{haveMenu}"
+            android:text="@{menuText}"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_popup_list"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_0"
+            app:layout_constraintTop_toBottomOf="@id/tv_sl_popup_title"
+            app:layout_constraintBottom_toTopOf="@id/tv_sl_popup_submit"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginBottom="@dimen/dp_10"
+            app:adapter="@{adapter}"/>
+
+        <TextView
+            android:id="@id/tv_sl_popup_submit"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:background="@drawable/shape_border_grey_fillet_mainbg_8"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginRight="@dimen/dp_20"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:visibility="@{haveSubmit}"
+            android:text="@{submitText}"
+            style="@style/AppTextTheme.Normal" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

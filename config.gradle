@@ -1,0 +1,51 @@
+ext{
+    applicationId = "com.bike.home"
+
+    //是否混淆
+    MinifyEnabled = true
+
+
+    android=[
+            compileSdkVersion :    29,//编译的SDK版本
+            buildToolsVersion :    "29.0.3",//Gradle编译项目的工具版本
+            minSdkVersion     :    23,// 最低支持Android版本
+            targetSdkVersion  :    29,// 目标版本
+            versionCode       :    1,//版本号
+            versionName       :    "1.0.0",//版本名
+            kotlin_version    :    '1.3.30'
+    ]
+
+    versions=[
+            "huxlyn"                :    "3.1.7",
+            "huxlynmodel"           :    "2.0.7",
+            "huxNetwork"            :    "2.0.9",
+            "MPAndroidChart"        :    "v3.1.0",
+            "shinebutton"           :    "1.0.0",
+            "hmshealth"             :    "5.2.0.301",
+            "hmshihealthbase"       :    "5.0.1.300",
+            "hihealthkit"           :    "5.1.0.300",
+            "hmswid"                :    "5.0.5.300",
+            "xiaomioauth"           :    "2.0.10",
+            "wechatsdk"             :    "6.6.4",
+            "pickerView"            :    "4.1.9",
+            "adsSdk"                :    "3.5.0.6"
+    ]
+
+    dependencies = [
+            "huxlynadapter"                :    "com.github.eastevilhux:huxlyn:${versions.huxlyn}",
+            "huxlynmodel"                  :    "com.github.eastevilhux:huxlynmodel:${versions.huxlynmodel}",
+            "huxNetwork"                   :    "com.github.eastevilhux:HuxNetwork:${versions.huxNetwork}",
+            "MPAndroidChart"               :    "com.github.PhilJay:MPAndroidChart:${versions.MPAndroidChart}",
+            "shinebutton"                  :    "com.sackcentury:shinebutton:${versions.shinebutton}",
+            "hmshealth"                    :    "com.huawei.hms:health:${versions.hmshealth}",
+            "hmshihealthbase"              :    "com.huawei.hms:hihealth-base:${versions.hmshihealthbase}",
+            "hihealthkit"                  :    "com.huawei.hihealth:hihealthkit:${versions.hihealthkit}",
+            "hmswid"                       :    "com.huawei.hms:hwid:${versions.hmswid}",
+            "xiaomioauth"                  :    "com.xiaomi.account:oauth-android:${versions.xiaomioauth}",
+            "wechatsdk"                    :    "com.tencent.mm.opensdk:wechat-sdk-android-without-mta:${versions.wechatsdk}",
+            "pickerView"                   :    "com.contrarywind:Android-PickerView:${versions.pickerView}",
+            "adsSdk"                       :    "com.pangle.cn:ads-sdk:${versions.adsSdk}"
+    ]
+
+
+}

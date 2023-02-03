@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="AppImageView">
+        <attr name="src_url" format="string"/>
+        <attr name="src_res" format="reference"/>
+        <attr name="src_file_path" format="string"/>
+        <attr name="src_style" format="enum">
+            <enum name='style_default' value="0"/>
+            <enum name='fillet' value="1"/>
+            <enum name="circle" value="2"/>
+        </attr>
+        <attr name="fillet_radius" format="integer"/>
+        <attr name="img_type" format="enum">
+            <enum name="img_default" value="0"/>
+            <enum name="banner" value="1"/>
+            <enum name="account" value="2"/>
+            <enum name="list_item" value="3"/>
+            <enum name="rectangle" value="4"/>
+        </attr>
+        <attr name="error_src" format="reference"/>
+        <attr name="placeholder_src" format="reference"/>
+        <attr name="src_type" format="enum">
+            <enum name="network" value="1"/>
+            <enum name="resource" value="2"/>
+            <enum name="file" value="3"/>
+        </attr>
+    </declare-styleable>
+</resources>

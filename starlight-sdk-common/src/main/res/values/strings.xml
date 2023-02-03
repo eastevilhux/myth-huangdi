@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="query_error">query error</string>
+    <string name="error_network">network error</string>
+    <string name="request_album_permission">request album premission</string>
+    <string name="menu_select_img">确定</string>
+    <string name="album_title_video_list">视频列表</string>
+    <string name="rmb">￥</string>
+    <string name="number_zero">0</string>
+    <string name="number_one">1</string>
+    <string name="number_two">2</string>
+</resources>
