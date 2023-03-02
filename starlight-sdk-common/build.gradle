@@ -141,5 +141,5 @@ dependencies {
     api 'pub.devrel:easypermissions:3.0.0'
 
     api 'com.github.eastevilhux:myth-fuxi:1.0.0'
-    api 'com.github.eastevilhux:myth-nuwa:1.0.0'
+    api 'com.github.eastevilhux:myth-nuwa:1.0.1'
 }
